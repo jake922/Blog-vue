@@ -1,0 +1,420 @@
+/* 全站移动端适配补丁：解决按钮显示不全、页面横向溢出、后台表格挤压等问题 */
+
+html,
+body,
+#app {
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (max-width: 820px) {
+  html,
+  body {
+    width: 100%;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  /* 前台所有页面头部：显示完整导航和按钮，不再裁切 */
+  .navbar,
+  .page-header {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 18px !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    gap: 14px !important;
+  }
+
+  .brand {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .brand-name {
+    font-size: 12px !important;
+    letter-spacing: 0.2em !important;
+    line-height: 1.35 !important;
+  }
+
+  .brand-subtitle {
+    font-size: 10px !important;
+    letter-spacing: 0.14em !important;
+  }
+
+  .nav-links {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    align-items: stretch !important;
+  }
+
+  .nav-links a {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 42px !important;
+    padding: 12px 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    color: #f4eee7 !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.08em !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    border: 1px solid rgba(245, 239, 232, 0.22) !important;
+    background: rgba(255, 255, 255, 0.026) !important;
+  }
+
+  .nav-links a::after {
+    display: none !important;
+  }
+
+  .header-actions {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+  }
+
+  .studio-button,
+  .music-nav-button {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 46px !important;
+    padding: 12px 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    overflow: hidden !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.08em !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  /* 首页首屏：避免内容被顶部操作区挤压或横向溢出 */
+  .landing-page,
+  .hero,
+  .page-shell,
+  .articles-page,
+  .collections-page,
+  .detail-page,
+  .about-page,
+  .login-page,
+  .admin-shell,
+  .editor-page {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  .hero {
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  .hero-content,
+  .page-hero,
+  .article-hero,
+  .collection-hero,
+  .about-hero {
+    width: calc(100% - 36px) !important;
+    max-width: none !important;
+    margin: 0 18px !important;
+    padding-top: 56px !important;
+  }
+
+  .headline,
+  .page-title,
+  .article-title,
+  .about-title {
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+    font-size: clamp(36px, 12vw, 54px) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  .eyebrow {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    line-height: 1.8 !important;
+    letter-spacing: 0.18em !important;
+  }
+
+  .introduction,
+  .page-lead,
+  .article-excerpt,
+  .about-intro {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 14px !important;
+    line-height: 1.9 !important;
+  }
+
+  .hero-actions {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .primary-action,
+  .secondary-action,
+  .all-articles,
+  .read-link {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .hero-footer {
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: calc(100% - 36px) !important;
+    margin: 56px 18px 0 !important;
+    padding-bottom: 28px !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .highlight-list {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .highlight {
+    min-width: 0 !important;
+  }
+
+  /* 前台内容区域 */
+  .featured-section,
+  .articles-section,
+  .collections-section,
+  .about-section,
+  .article-section,
+  .content-section {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding-right: 18px !important;
+    padding-left: 18px !important;
+    overflow-x: hidden !important;
+  }
+
+  .section-heading,
+  .result-header,
+  .article-layout,
+  .about-grid,
+  .collections-grid,
+  .article-grid,
+  .posts-grid,
+  .content-grid,
+  .stats-grid,
+  .insight-grid,
+  .feature-grid {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .article-card,
+  .collection-card,
+  .about-card,
+  .stat-card,
+  .insight-card,
+  .feature-card,
+  .post-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .filter-panel,
+  .search-panel,
+  .toolbar,
+  .filter-bar {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    max-width: 100%;
+  }
+
+  /* 登录页 */
+  .login-page,
+  .login-shell,
+  .login-card,
+  .auth-layout {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  .login-shell,
+  .login-card,
+  .auth-layout {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 后台页面：侧边栏、表格、编辑器移动端不挤压 */
+  .admin-layout,
+  .admin-shell,
+  .dashboard-shell,
+  .admin-page,
+  .categories-page,
+  .articles-admin-page {
+    width: 100% !important;
+    max-width: 100vw !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    overflow-x: hidden !important;
+  }
+
+  .sidebar,
+  .admin-sidebar {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+  }
+
+  .admin-main,
+  .dashboard-main,
+  .content-main,
+  .editor-main {
+    width: 100% !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    padding: 18px !important;
+    overflow-x: hidden !important;
+  }
+
+  .topbar,
+  .editor-header {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .action-row,
+  .header-actions,
+  .editor-actions,
+  .form-actions {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .data-table,
+  .article-table,
+  .category-table,
+  table {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .table-wrapper,
+  .article-table-wrapper,
+  .category-table-wrapper,
+  .editor-body,
+  .md-editor,
+  .md-editor-content {
+    width: 100% !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+  }
+
+  .form-grid,
+  .editor-grid,
+  .category-grid,
+  .dashboard-grid,
+  .summary-grid {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .navbar,
+  .page-header {
+    padding: 16px 14px !important;
+  }
+
+  .nav-links {
+    grid-template-columns: 1fr !important;
+  }
+
+  .header-actions {
+    grid-template-columns: 1fr !important;
+  }
+
+  .studio-button,
+  .music-nav-button,
+  .nav-links a {
+    min-height: 44px !important;
+    font-size: 12px !important;
+  }
+
+  .hero-content,
+  .page-hero,
+  .article-hero,
+  .collection-hero,
+  .about-hero {
+    width: calc(100% - 28px) !important;
+    margin: 0 14px !important;
+  }
+
+  .featured-section,
+  .articles-section,
+  .collections-section,
+  .about-section,
+  .article-section,
+  .content-section {
+    padding-right: 14px !important;
+    padding-left: 14px !important;
+  }
+}

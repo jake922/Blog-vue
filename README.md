@@ -1,44 +1,44 @@
-# vue-cinematic-blog
+# Noir Archive - 题目15：博客前台 + 后台系统
 
-This template should help get you started developing with Vue 3 in Vite.
+本项目是基于 Vue 3 + Vite 实现的博客前台与后台管理系统，完成了文章浏览、文章详情、分类筛选、搜索、后台登录、文章发布、文章编辑、文章删除、分类管理、Markdown 编辑器等功能。
 
-## Recommended IDE Setup
+## 技术栈
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Vue 3
+- Vite
+- Vue Router
+- Pinia
+- Axios
+- md-editor-v3
+- VueUse
+- Vitest
+- Vercel
 
-## Recommended Browser Setup
+## 功能说明
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+### 前台功能
 
-## Customize configuration
+- 首页精选文章展示
+- 文章列表
+- 文章详情
+- 分类筛选
+- 文章搜索
+- 分类集合页
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### 后台功能
 
-## Project Setup
+- 登录认证
+- 路由守卫
+- 文章发布
+- 文章编辑
+- 文章删除
+- 分类新增
+- 分类重命名
+- 分类删除
+- Markdown 编辑器实时预览
 
-```sh
-npm install
-```
+## 登录账号
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+```text
+用户名：admin
+密码：noir2026

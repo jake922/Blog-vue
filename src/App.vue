@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import { useTitle } from '@vueuse/core'
 import CinematicBackdrop from './components/CinematicBackdrop.vue'
 
+
 const route = useRoute()
 
 const pageTitle = computed(() => {
@@ -61,6 +62,7 @@ useTitle(pageTitle)
       v-if="showCinematicBackdrop"
       :tone="cinematicTone"
     />
+
 
     <div class="route-stage">
       <RouterView />

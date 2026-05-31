@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useBlogStore } from '../stores/blog'
+import NavMusicButton from '../components/NavMusicButton.vue'
 
 
 const blogStore = useBlogStore()
@@ -38,9 +39,13 @@ const highlights = computed(() => [
   <RouterLink to="/about">About</RouterLink>
 </nav>
 
-        <RouterLink class="studio-button" to="/admin">
-  Admin Studio
-</RouterLink>
+        <div class="header-actions">
+          <NavMusicButton />
+
+          <RouterLink class="studio-button" to="/admin">
+            Admin Studio
+          </RouterLink>
+        </div>
       </header>
 
       <div class="hero-content">
@@ -321,6 +326,13 @@ const highlights = computed(() => [
 
 .nav-links a:hover::after {
   transform: scaleX(1);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
 }
 
 .studio-button {

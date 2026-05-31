@@ -1,5 +1,5 @@
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,26 +7,38 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-.DS_Store
-dist
-dist-ssr
-coverage
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Local files
 *.local
+.env
+.env.*
+.eslintcache
+
+# Vercel local config
+.vercel/
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
+.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
+# TypeScript / tooling cache
 *.tsbuildinfo
 
-.eslintcache
+# Coverage
+coverage/
 
 # Cypress
 /cypress/videos/
@@ -37,5 +49,3 @@ __screenshots__/
 
 # Vite
 *.timestamp-*-*.mjs
-
-.vercel
