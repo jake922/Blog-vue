@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "run-p dev:client dev:server",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "run-s lint:*",
@@ -12,7 +12,9 @@
     "lint:eslint": "eslint . --fix --cache",
     "format": "prettier --write --experimental-cli src/",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "dev:client": "vite",
+    "dev:server": "node server/index.js"
   },
   "dependencies": {
     "@vueuse/core": "^14.3.0",

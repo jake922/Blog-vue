@@ -1,6 +1,33 @@
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
+import { TOKEN_KEY } from '../api/request'
 import { useAuthStore } from './auth'
+
+vi.mock('../api/auth', async () => {
+  const jwtAuth = await import('../../server/jwtAuth.js')
+
+  return {
+    loginApi: vi.fn(async (credentials) => {
+      const result = await jwtAuth.loginWithPassword(credentials)
+
+      if (result.status !== 200) {
+        throw new Error(result.body.message)
+      }
+
+      return result.body.data
+    }),
+    getProfileApi: vi.fn(async () => {
+      const token = localStorage.getItem(TOKEN_KEY)
+      const result = jwtAuth.getProfileFromAuthorization(`Bearer ${token}`)
+
+      if (result.status !== 200) {
+        throw new Error(result.body.message)
+      }
+
+      return result.body.data
+    }),
+  }
+})
 
 describe('auth store', () => {
   beforeEach(() => {
@@ -8,7 +35,7 @@ describe('auth store', () => {
     setActivePinia(createPinia())
   })
 
-  it('logs in successfully through the Axios mock API and stores JWT session', async () => {
+  it('logs in through the real server JWT service and stores JWT session', async () => {
     const store = useAuthStore()
 
     const succeeded = await store.login({
@@ -19,6 +46,7 @@ describe('auth store', () => {
     expect(succeeded).toBe(true)
     expect(store.isAuthenticated).toBe(true)
     expect(store.user).toEqual({
+      id: 1,
       username: 'admin',
       name: 'Noir Editor',
       role: 'Administrator',
@@ -61,7 +89,7 @@ describe('auth store', () => {
     expect(store.user.name).toBe('Noir Editor')
   })
 
-  it('clears the session when an invalid JWT is rejected by the interceptor flow', async () => {
+  it('clears the session when an invalid JWT is rejected by the profile API', async () => {
     const store = useAuthStore()
 
     await store.login({

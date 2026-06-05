@@ -182,7 +182,7 @@ const handleVideoError = () => {
         </div>
 
         <p class="security-note">
-          使用模拟 JWT Token 与 localStorage 实现课程项目登录认证演示。
+          使用后端签发的 JWT Token 与 localStorage 实现后台登录认证。
         </p>
       </div>
     </section>
